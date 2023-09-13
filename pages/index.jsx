@@ -6,13 +6,6 @@ import Image from "next/image";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export async function generateMetadata({ params, searchParams }) {
-	return {
-		title: 'My title',
-		description: 'My description',
-    content:"interest-cohort=()",    
-	}
-}
 
 export default function index() {
   const [movies, setMovies] = useState([]);
@@ -51,11 +44,14 @@ useEffect(() => {
   // setTimeout(() => { setMovieRand(movieRandom[0]), console.log(movieRand);}, 1000)
   // console.log(movieRand)
 
-  fetchMovies()        
+  //fetchMovies() 
+  const setInter = setInterval(() => {fetchMovies()}, 2000);
+  return () => clearInterval(setInter);  
+  
 }, [movies, movieRand, movieOne, loading]);
 
 if (loading) { 
-  return (<div><Skeleton count={1} height="100vh"/></div>)
+  return (<div><Skeleton count={2} height="50vh"/></div>)
 }
     return (
       

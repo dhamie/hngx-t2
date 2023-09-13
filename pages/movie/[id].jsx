@@ -34,16 +34,16 @@ useEffect(() => {
                 setLoading(false)
                 //console.log(movieGenre)
             } catch (e) {
-                //console.log(e);
+                console.log(e);
             }
             
         };
         
-        fetchMovies()
-        // const setInter = setInterval(() => {fetchMovies()}, 1000);
-        // return () => clearInterval(setInter);   
+        //fetchMovies()
+        const setInter = setInterval(() => {fetchMovies()}, 3000);
+        return () => clearInterval(setInter);   
     }     
-  }, [setMovieIDFn, movieDetails, movieGenre, loading]);
+  }, [router.isReady, setMovieIDFn, movieID, movieDetails, movieGenre, loading]);
 
   if (loading) { 
     return (<div><Skeleton count={1} height="100vh"/></div>)
