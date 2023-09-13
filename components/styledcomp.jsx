@@ -8,6 +8,9 @@ export const GlobalStyle = createGlobalStyle`
     background: #fff;
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
+  a{
+    text-decoration: none !important
+  }
 `;
 
 export const FlexibleDiv = styled.div`
@@ -24,8 +27,12 @@ export const FlexibleDiv = styled.div`
   order: ${props => props.$order || "0"};
   background: ${props => props.$background || "#fff"};
   margin: ${props => props.$margin || "auto"};
-  padding: ${props => props.$padding || "auto"};
-  box-sizing: ${props => props.$boxsizing || "border-box"};
+  padding: ${props => props.$padding || "0"};
+  box-sizing: ${props => props.$boxsizing || "border-box"};  
+  box-shadow: ${props => props.$boxshadow || "none"};
+  border-radius: ${props => props.$borderrad || "0"};
+  overflow: ${props => props.$overflow || "hidden"};
+  z-index: ${props => props.$zindex || "0"};
 `;
 
 export const FlexibleDiv1 = styled.div`
@@ -42,8 +49,13 @@ export const FlexibleDiv1 = styled.div`
   order: ${props => props.$order || "0"};
   background: ${props => props.$background || "#fff"};
   margin: ${props => props.$margin || "auto"};
-  padding: ${props => props.$padding || "auto"};
+  padding: ${props => props.$padding || "0"};
   box-sizing: ${props => props.$boxsizing || "border-box"};
+  box-shadow: ${props => props.$boxshadow || "none"};
+  border-radius: ${props => props.$borderrad || "0"};
+  overflow: ${props => props.$overflow || "hidden"};
+  z-index: ${props => props.$zindex || "0"};
+  position: ${props => props.$position || "relative"};
 `;
 
 
@@ -51,4 +63,91 @@ export const FlexibleDivContent = styled.div`
  -ms-flex: 0 0 ${props => props.$msflex || "25%"};
   flex: 0 0 ${props => props.$flex || "25%"};
   max-width: ${props => props.$maxwidth || "25%"};
+  width: ${props => props.$width || "max-content"};
+  height: ${props => props.$height || "max-content"};
+  padding: ${props => props.$padding || "0"};
+  box-sizing: ${props => props.$boxsizing || "border-box"};
+  position: ${props => props.$position || "relative"};
+  top: ${props => props.$top || "auto"};
+  left: ${props => props.$left || "auto"};
+  bottom: ${props => props.$bottom || "auto"};
+  margin: ${props => props.$margin || "auto"};
+  right: ${props => props.$right || "auto"};
+  background: ${props => props.$background || "transparent"};
+
+  @media (max-width: 996px) {
+    -ms-flex: 0 0 ${props => props.$res9msflex || "50%"};
+    flex: 0 0 ${props => props.$res9flex || "50%"};
+    max-width: ${props => props.$res9maxwidth || "50%"};
+  }
+
+  @media (max-width: 767px) {
+    -ms-flex: 0 0 ${props => props.$res7msflex || "100%"};
+    flex: 0 0 ${props => props.$res7flex || "100%"};
+    max-width: ${props => props.$res7maxwidth || "100%"};
+    margin: ${props => props.$resmargin || "auto"};
+  }
+`;
+
+export const ImageBox = styled.img`
+  object-fit: 0 0 ${props => props.$msflex || "25%"};
+  object-size: 0 0 ${props => props.$flex || "25%"};
+  max-width: ${props => props.$maxwidth || "100%"};
+  width: ${props => props.$width || "max-content"};
+  height: ${props => props.$height || "max-content"};
+`;
+
+export const ImageWrap = styled.span`
+  width: ${props => props.$width || "max-content"};
+  height: ${props => props.$height || "max-content"};  
+`;
+
+export const Title = styled.h1`
+  font-size: ${props => props.$fontsize || "1.5em"};
+  text-align: ${props => props.$textalign || "left"};
+  color: ${props => props.$color || "#333"} ;
+  height: ${props => props.$height || "max-content"}; 
+  line-height: ${props => props.$lineheight || "1.5"};
+  margin: ${props => props.$margin || "1em"}; 
+`;
+
+export const Para = styled.p`
+  font-size: ${props => props.$fontsize || "10px"};
+  text-align: ${props => props.$textalign || "left"};
+  color: ${props => props.$color || "#333"} ;
+  margin: ${props => props.$margin || "1em"};
+  line-height: ${props => props.$lineheight || "1.5"};
+`;
+
+
+export const Button = styled.button`
+  display: inline-block;
+  color: ${props => props.$color || "#fff"} ;
+  font-size: ${props => props.$fontsize || "1em"};
+  margin: ${props => props.$margin || "0"};
+  padding: ${props => props.$padding || ".5em 1em"};
+  border: ${props => props.$border || "2px solid #BE113C"}; 
+  border-radius: ${props => props.$borderrad || "5px"};
+  display: block;
+  background: ${props => props.$background || "#BE113C"};
+  width: ${props => props.$width || "max-content"};
+  height: ${props => props.$height || "max-content"};
+`;
+
+
+export const Anchor = styled.a`
+  font-size: ${props => props.$fontsize || "10px"};
+  text-align: ${props => props.$textalign || "left"};
+  color: ${props => props.$color || "#BE113C"} ;
+`;
+
+
+export const Span = styled.span`
+  width: ${props => props.$width || "max-content"};
+  height: ${props => props.$height || "max-content"};
+  font-size: ${props => props.$fontsize || "1.5em"};
+  text-align: ${props => props.$textalign || "left"};
+  color: ${props => props.$color || "#333"} ;
+  line-height: ${props => props.$lineheight || "1.5"};
+  margin: ${props => props.$margin || "auto"};   
 `;
