@@ -13,7 +13,7 @@ export default function card({dataTestId, movieValues}) {
                 <FlexibleDiv1 $padding="0" 
                     $height="100%"  
                     $background="" 
-                    alignitems="start" 
+                    $alignitems="start" 
                     $boxshadow="rgba(0, 0, 0, 0.09) 0px 3px 12px;" 
                     $borderrad="1rem" 
                     $zindex="1" 
@@ -26,7 +26,6 @@ export default function card({dataTestId, movieValues}) {
                             height={0}
                             sizes="100vw"
                             style={{ width: '100%', height: '380px', objectFit: "cover", objectPosition: "top"}}
-                            loader={imageLoader}
                             priority
                             data-testid="movie-poster"
                         />

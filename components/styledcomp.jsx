@@ -6,10 +6,17 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background: #fff;
-    font-family: Open-Sans, Helvetica, Sans-Serif;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
   }
   a{
     text-decoration: none !important
+  }
+  .icon{
+    font-size: 1.5em;
+    margin: 0 .3em
+  }
+  .icon path{
+    stroke: #555
   }
 `;
 
@@ -52,10 +59,11 @@ export const FlexibleDiv1 = styled.div`
   padding: ${props => props.$padding || "0"};
   box-sizing: ${props => props.$boxsizing || "border-box"};
   box-shadow: ${props => props.$boxshadow || "none"};
+  border: ${props => props.$border || "0"};
   border-radius: ${props => props.$borderrad || "0"};
   overflow: ${props => props.$overflow || "hidden"};
   z-index: ${props => props.$zindex || "0"};
-  position: ${props => props.$position || "relative"};
+  position: ${props => props.$position || "relative"};  
 `;
 
 
@@ -74,6 +82,7 @@ export const FlexibleDivContent = styled.div`
   margin: ${props => props.$margin || "auto"};
   right: ${props => props.$right || "auto"};
   background: ${props => props.$background || "transparent"};
+  overflow: ${props => props.$overflow || "hidden"};
 
   @media (max-width: 996px) {
     -ms-flex: 0 0 ${props => props.$res9msflex || "50%"};
@@ -117,6 +126,7 @@ export const Para = styled.p`
   color: ${props => props.$color || "#333"} ;
   margin: ${props => props.$margin || "1em"};
   line-height: ${props => props.$lineheight || "1.5"};
+  font-weight: ${props => props.$fontweight || "normal"};
 `;
 
 

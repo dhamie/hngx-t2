@@ -3,11 +3,14 @@ import { useState, useEffect, Fragment } from 'react';
 import Card from '../components/card';
 import axios from "axios";
 import Image from "next/image";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function index() {
   const [movies, setMovies] = useState([]);
   const [movieRand, setMovieRand] = useState(3);
   const [movieOne, setMovieOne] = useState([]);
+  const [loading, setLoading] = useState(true);
   
   // const setMovieRandfn = (e) => {
   //   let value = e[Math.floor(Math.random()*(e.length))]
@@ -29,6 +32,7 @@ useEffect(() => {
         //console.log(response.data.results),        
         setMovies([...response.data.results]) 
         setMovieOne(response2.data)
+        setLoading(false)
     } catch (e) {
         console.log(e);
     }
@@ -40,13 +44,16 @@ useEffect(() => {
   // console.log(movieRand)
 
   fetchMovies()        
-}, [movies, movieRand, movieOne]);
+}, [movies, movieRand, movieOne, loading]);
 
+if (loading) { 
+  return (<div><Skeleton count={1} height="100vh"/></div>)
+}
     return (
-      <>
+      
         <FlexibleDiv $width="100%" $background="" >
           <FlexibleDiv1 $width="100%" $height="80vh" $background="">
-            <ImageWrap $width="100%" $height="100%">
+            <ImageWrap $width="100%" $height="100%">              
                 <Image
                     src={`https://image.tmdb.org/t/p/w500/${movieOne.poster_path}`}
                     alt='alt' 
@@ -97,6 +104,6 @@ useEffect(() => {
           </FlexibleDiv1>
 
         </FlexibleDiv>
-      </>
+      
     );
 }
