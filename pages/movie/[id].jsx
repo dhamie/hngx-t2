@@ -8,7 +8,7 @@ import { GrVideo, GrHomeRounded, GrCirclePlay, GrCalendar, GrLogout } from "reac
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export default function Movie() {
+export default function Movie({movie}) {
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieID, setMovieID] = useState(2)
   const [movieGenre, setMovieGenre] = useState([])
@@ -38,10 +38,11 @@ useEffect(() => {
             }
             
         };
-        
+        console.log({movie})
         //fetchMovies()
         const setInter = setInterval(() => {fetchMovies()}, 3000);
-        return () => clearInterval(setInter);   
+        return () => clearInterval(setInter); 
+          
     }     
   }, [router.isReady, setMovieIDFn, movieID, movieDetails, movieGenre, loading]);
 
@@ -50,7 +51,9 @@ useEffect(() => {
   }
 
     return (
+        
         <FlexibleDiv $width="100%" $height="100vh" $background="" $alignitems="start">
+            
             <FlexibleDivContent 
               $maxwidth="15%" 
               $flex="15%" 
@@ -220,3 +223,18 @@ useEffect(() => {
         )
   }
 
+
+  export async function getStaticPaths() {
+    return {
+      paths: [{ params: { id: '1' } }, { params: { id: '2' } }],
+      fallback: false, // can also be true or 'blocking'
+    }
+  }
+
+  // `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps(context) {
+    return {
+      // Passed to the page component as props
+      props: { movie: {fff} },
+    }
+  }
