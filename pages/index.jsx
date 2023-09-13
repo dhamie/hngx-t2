@@ -6,6 +6,14 @@ import Image from "next/image";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
+export async function generateMetadata({ params, searchParams }) {
+	return {
+		title: 'My title',
+		description: 'My description',
+    content:"interest-cohort=()",    
+	}
+}
+
 export default function index() {
   const [movies, setMovies] = useState([]);
   const [movieRand, setMovieRand] = useState(3);
