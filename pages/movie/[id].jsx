@@ -8,7 +8,7 @@ import { GrVideo, GrHomeRounded, GrCirclePlay, GrCalendar, GrLogout } from "reac
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export default function Movie({movie}) {
+export default function Movie() {
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieID, setMovieID] = useState(2)
   const [movieGenre, setMovieGenre] = useState([])
@@ -224,17 +224,25 @@ useEffect(() => {
   }
 
 
-  export async function getStaticPaths() {
-    return {
-      paths: [{ params: { id: '5' } }, { params: { id: '8' } }],
-      fallback: false, // can also be true or 'blocking'
-    }
-  }
-
-  // `getStaticPaths` requires using `getStaticProps`
-export async function getStaticProps(context) {
-    return {
-      // Passed to the page component as props
-      props: { movie: {fff} },
-    }
-  }
+//   export async function getStaticPaths() {
+//     return {
+//       paths: [
+//         {
+//           params: {
+//             name: 'next.js',
+//           },
+//         }, // See the "paths" section below
+//       ],
+//       fallback: true, // false or "blocking"
+//     }
+//   }
+   
+//   export async function getStaticProps() {
+//     const res = await fetch('https://api.github.com/repos/vercel/next.js')
+//     const repo = await res.json()
+//     return { props: { repo } }
+//   }
+   
+//   export default function Page({ repo }) {
+//     return repo.stargazers_count
+//   }
