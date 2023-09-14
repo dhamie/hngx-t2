@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
-import logo from "../../public/images/Logo_dash.png"
+import Logo from "../../public/images/Logo_dash.png"
 import { GrVideo, GrHomeRounded, GrCirclePlay, GrCalendar, GrLogout } from "react-icons/gr";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
@@ -13,37 +13,39 @@ export default function Movie() {
   const [movieID, setMovieID] = useState(2)
   const [movieGenre, setMovieGenre] = useState([])
   const router = useRouter();
-  const [loading, setLoading] = useState(true);   
+  const [loading, setLoading] = useState(true);
+  const moviePassed = parseInt(router.query["id"])   
   
-  const setMovieIDFn = () => {
-    const moviePassed = parseInt(router.query["id"])    
-    setMovieID(moviePassed);    
-}
+//   const setMovieIDFn = () => {
+//     const moviePassed = parseInt(router.query["id"])    
+//     setMovieID(moviePassed);    
+// }
 
 useEffect(() => {
     if (router.isReady){
-        setMovieIDFn()         
+        //setMovieIDFn()         
         const fetchMovies = async () => {                    
-            try{                
+            try{   
+                              
                 const apiKey = "a267d09f4e9e419f565759a50273521f";
                 const response = await axios.get(
-                    'https://api.themoviedb.org/3/movie/' + movieID + '?api_key=' + apiKey +'&language=en-US'
+                    'https://api.themoviedb.org/3/movie/' + moviePassed + '?api_key=' + apiKey +'&language=en-US'
                 );                
                 setMovieDetails(response.data)
                 setMovieGenre(response.data.genres)
                 setLoading(false)
-                //console.log(movieGenre)
+                //console.log(response.data)
             } catch (e) {
                 console.log(e);
             }
             
         };
-        //fetchMovies()
-        const setInter = setInterval(() => {fetchMovies()}, 3000);
-        return () => clearInterval(setInter); 
+        fetchMovies()
+        // const setInter = setInterval(() => {fetchMovies()}, 2000);
+        // return () => clearInterval(setInter); 
           
     }     
-  }, [router.isReady, setMovieIDFn, movieID, movieDetails, movieGenre, loading]);
+  }, []);
 
   if (loading) { 
     return (<div><Skeleton count={1} height="100vh"/></div>)
@@ -72,7 +74,7 @@ useEffect(() => {
                        <FlexibleDiv1 $margin="0" $width="85%" >
                         <ImageWrap $width="100%" $height="auto">
                                 <Image
-                                    src={logo}
+                                    src={Logo}
                                     alt='alt' 
                                     width={0}
                                     height={0}

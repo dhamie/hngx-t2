@@ -18,6 +18,16 @@ export const GlobalStyle = createGlobalStyle`
   .icon path{
     stroke: #555
   }
+
+  .icon-noclick{
+    fill: #fff;
+    font-size: 1.5em;
+    margin: 0 .3em
+  }
+
+  .icon-click{
+    fill: red
+  }
 `;
 
 export const FlexibleDiv = styled.div`
@@ -83,6 +93,7 @@ export const FlexibleDivContent = styled.div`
   right: ${props => props.$right || "auto"};
   background: ${props => props.$background || "transparent"};
   overflow: ${props => props.$overflow || "hidden"};
+  z-index: ${props => props.$zindex || "0"};
 
   @media (max-width: 996px) {
     -ms-flex: 0 0 ${props => props.$res9msflex || "50%"};
@@ -143,6 +154,20 @@ export const Button = styled.button`
   width: ${props => props.$width || "max-content"};
   height: ${props => props.$height || "max-content"};
 `;
+
+export const Input = styled.input`
+  color: ${props => props.$color || "#fff"} ;
+  font-size: ${props => props.$fontsize || "1em"};
+  margin: ${props => props.$margin || "0"};
+  padding: ${props => props.$padding || ".5em 1em"};
+  border: ${props => props.$border || "2px solid #fff"}; 
+  border-radius: ${props => props.$borderrad || "5px"};
+  display: block;
+  background: ${props => props.$background || "transparent"};
+  width: ${props => props.$width || "max-content"};
+  height: ${props => props.$height || "max-content"};
+`;
+
 
 
 export const Anchor = styled.a`
