@@ -38,7 +38,6 @@ useEffect(() => {
             }
             
         };
-        console.log({movie})
         //fetchMovies()
         const setInter = setInterval(() => {fetchMovies()}, 3000);
         return () => clearInterval(setInter); 
