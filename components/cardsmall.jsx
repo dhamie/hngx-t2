@@ -24,8 +24,9 @@ export default function CardSmall({dataTestId, movieValues}) {
                     $height="100px"  
                     $background="" 
                     $alignitems="start" 
-                    $boxshadow="rgba(0, 0, 0, 0.09) 0px 3px 12px;" 
-                    $borderrad="1rem" 
+                    $boxshadow="none" 
+                    $borderrad="1rem"
+                    $border="1px solid grey" 
                     $zindex="1" 
                     $width="100%" 
                     $flexdir="row">

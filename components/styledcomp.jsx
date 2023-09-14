@@ -61,6 +61,7 @@ export const FlexibleDiv1 = styled.div`
   width: ${props => props.$width || "max-content"};
   height: ${props => props.$height || "max-content"};
   max-width: ${props => props.$maxwidth || "100%"};
+  min-height: ${props => props.$minheight || "max-content"};
   gap: ${props => props.$gap || "0"};
   flex-grow: ${props => props.$flexgrow || "0"};
   order: ${props => props.$order || "0"};
@@ -115,11 +116,19 @@ export const ImageBox = styled.img`
   max-width: ${props => props.$maxwidth || "100%"};
   width: ${props => props.$width || "max-content"};
   height: ${props => props.$height || "max-content"};
+
+  
 `;
 
 export const ImageWrap = styled.span`
   width: ${props => props.$width || "max-content"};
-  height: ${props => props.$height || "max-content"};  
+  height: ${props => props.$height || "max-content"}; 
+  
+  @media (max-width: 996px) {
+    >*  {
+      width: 100% !important
+      };
+  }
 `;
 
 export const Title = styled.h1`

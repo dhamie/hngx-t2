@@ -1,6 +1,15 @@
+
+## Info
+
+This is a Movie box website created with nextjs(more details below)
+extra pacakges included are 'react-icons', 'axois', 'styled-component' and 'react-loading-skeleton' 
+
+The project uses the 'styled-component' as  a base for building custom components with css.
+The project also uses the 'The movie database' api to get information shown on the page.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Getting Started locally
 
 First, run the development server:
 
@@ -32,3 +41,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## P.S known issue
+
+Due to the way the movie id is gotten as per requirement, when the page is ran/deployed and a user clicks on or searchs for a movie, 
+reloading the page causes a 404 error. 
+
+please go back to the index and re-query.
+
+a resolution is being worked on.
+

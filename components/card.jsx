@@ -34,9 +34,9 @@ export default function Card({dataTestId, movieValues}) {
                             data-testid="movie-poster"
                         />
                     </ImageWrap>
-                    <FlexibleDiv1 $width="100%" $height="100%" $margin="0" $padding="1.1rem 2rem" $flexdir="column" $alignitems="start">
-                        <Para data-testid="movie-release-date">Release Date: {movieValues.release_date}</Para>
-                        <Title data-testid="movie-title" $height="30px" $fontsize="1rem">{movieValues.title}</Title>                        
+                    <FlexibleDiv1 $width="100%" $height="100%" $margin="0" $padding="1.1rem 1rem" $flexdir="column" $alignitems="start">
+                        <Para data-testid="movie-release-date" $margin="0" $fontsize=".6rem">Release Date: {movieValues.release_date}</Para>
+                        <Title data-testid="movie-title" $height="55px" $fontsize="1rem" $margin="0">{movieValues.title}</Title>                        
                     </FlexibleDiv1>
                 </FlexibleDiv1>     
             </Link>

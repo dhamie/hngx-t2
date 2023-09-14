@@ -10,20 +10,14 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Movie() {
   const [movieDetails, setMovieDetails] = useState([]);
-  const [movieID, setMovieID] = useState(2)
   const [movieGenre, setMovieGenre] = useState([])
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const moviePassed = parseInt(router.query["id"])   
   
-//   const setMovieIDFn = () => {
-//     const moviePassed = parseInt(router.query["id"])    
-//     setMovieID(moviePassed);    
-// }
 
 useEffect(() => {
     if (router.isReady){
-        //setMovieIDFn()         
         const fetchMovies = async () => {                    
             try{   
                               
@@ -36,13 +30,12 @@ useEffect(() => {
                 setLoading(false)
                 //console.log(response.data)
             } catch (e) {
-                console.log(e);
+                onsole.log(err.name + ' ' + err.message + ' ' +  err.stack);
             }
             
         };
-        fetchMovies()
-        // const setInter = setInterval(() => {fetchMovies()}, 2000);
-        // return () => clearInterval(setInter); 
+        const timer = setTimeout(() => fetchMovies() , 3000);
+        return () => clearTimeout(timer); 
           
     }     
   }, []);
