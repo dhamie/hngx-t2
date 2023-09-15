@@ -13,7 +13,7 @@ export default function Card({dataTestId, movieValues}) {
     
     return (
         <FlexibleDivContent data-testid={dataTestId} $padding="1rem" $margin="0">
-            <Link key={movieValues.id} href= {{pathname: '/movie/[id]', query: { id: movieValues.id }}}>
+            <Link key={movieValues.id} href= {{pathname: '/movies/[id]', query: { id: movieValues.id }}}>
                 <FlexibleDiv1 $padding="0" 
                     $height="100%"  
                     $background="" 
@@ -34,7 +34,7 @@ export default function Card({dataTestId, movieValues}) {
                         />
                     </ImageWrap>
                     <FlexibleDiv1 $width="100%" $height="100%" $margin="0" $padding="1.1rem 1rem" $flexdir="column" $alignitems="start">
-                        <Para data-testid="movie-release-date" $margin="0" $fontsize=".6rem">Release Date: {movieValues.release_date}</Para>
+                        <Para data-testid="movie-release-date" $margin="0" $fontsize=".6rem">{movieValues.release_date}</Para>
                         <Title data-testid="movie-title" $height="55px" $fontsize="1rem" $margin="0">{movieValues.title}</Title>                        
                     </FlexibleDiv1>
                 </FlexibleDiv1>     

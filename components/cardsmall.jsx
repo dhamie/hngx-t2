@@ -19,7 +19,7 @@ export default function CardSmall({dataTestId, movieValues}) {
         $res9flex="100%" 
         $maxwidth="100%"  
         $flex="100%">
-            <Link key={movieValues.id} href={'/movie/'+ movieValues.id } >
+            <Link key={movieValues.id} href={'/movies/'+ movieValues.id } >
                 <FlexibleDiv1 $padding="0" 
                     $height="100px"  
                     $background="" 
@@ -42,7 +42,7 @@ export default function CardSmall({dataTestId, movieValues}) {
                         />
                     </ImageWrap>
                     <FlexibleDiv1 $width="70%" $height="100%" $margin="0" $padding=".5rem" $flexdir="column" $alignitems="start">
-                        <Para data-testid="movie-release-date" $margin=".2rem">Release Date: {movieValues.release_date}</Para>
+                        <Para data-testid="movie-release-date" $margin=".2rem">{movieValues.release_date}</Para>
                         <Title data-testid="movie-title" $height="auto" $fontsize=".8rem" $margin=".2rem">{movieValues.title}</Title>                        
                     </FlexibleDiv1>
                 </FlexibleDiv1>     
