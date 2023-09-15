@@ -26,25 +26,9 @@ useEffect(() => {
             
         }else{
             console.log(err.name + ' ' + err.message + ' ' +  err.stack);
-        }                    
-            // try{                               
-            //     // const apiKey = "a267d09f4e9e419f565759a50273521f";
-            //     // const response = await axios.get(
-            //     //     'https://api.themoviedb.org/3/movie/' + moviePassed + '?api_key=' + apiKey +'&language=en-US'
-            //     // );                
-            //     setMovieDetails(repo)
-            //     setMovieGenre(repo.genres)
-            //     setLoading(false)
-            //     //console.log(response.data)
-            // } catch (e) {
-            //     console.log(err.name + ' ' + err.message + ' ' +  err.stack);
-            // }
-            // setMovieDetails(repo)
-            // setMovieGenre(repo.genres)
-            // setLoading(false)
+        } 
             
         };
-        // fetchMovies()
         const timer = setTimeout(() => fetchMovies() , 3000);
         return () => clearTimeout(timer);        
     } 
@@ -230,43 +214,21 @@ useEffect(() => {
 
 
 
-//   export async function getStaticProps({ params }) {
-//     // const res = await fetch(`https://.../posts/${params.id}`);
-//     // const post = await res.json();
-//     const id = {params}
-//     return {
-//       props: { params },
-//     }
-//   }
-
-//   export async function getStaticPaths(ctx) {  
-    
-//     return {
-//         paths: [], //indicates that no page needs be created at build time
-//         fallback: true //indicates the type of fallback
-//     }
-// }
 
 
 export async function getServerSideProps({ params }) {
-    // const { language, lessonID } = params;
-    // const data = await fetchLesson(language, lessonID);
-    const apiKey = "a267d09f4e9e419f565759a50273521f";
-        // const response = await axios.get(
-        //     'https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US'
-        // ); 
-
-        
-  
-
-    try{   
-                              
+    // const apiKey = "a267d09f4e9e419f565759a50273521f";
+    // const response = await axios.get(
+    //     'https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US'
+    // ); 
+    try{
+                                     
         const apiKey = "a267d09f4e9e419f565759a50273521f";
         const res = await fetch('https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US')
         const repo = await res.json()
         
         return {
-            props: { repo }, // will be passed to the page component as props
+            props: { repo }, 
           };    
     } catch (err) {
         console.log(err.name + ' ' + err.message + ' ' +  err.stack);
@@ -279,25 +241,4 @@ export async function getServerSideProps({ params }) {
 
 
 
-//   export async function getStaticPaths() {
-//     return {
-//       paths: [
-//         {
-//           params: {
-//             name: 'next.js',
-//           },
-//         }, // See the "paths" section below
-//       ],
-//       fallback: true, // false or "blocking"
-//     }
-//   }
-   
-//   export async function getStaticProps() {
-//     const res = await fetch('https://api.github.com/repos/vercel/next.js')
-//     const repo = await res.json()
-//     return { props: { repo } }
-//   }
-   
-//   export default function Page({ repo }) {
-//     return repo.stargazers_count
-//   }
+

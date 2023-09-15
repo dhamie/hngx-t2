@@ -49,5 +49,5 @@ reloading the page causes a 404 error.
 
 please go back to the index and re-query.
 
-a resolution is being worked on.
+a resolution is being worked on. [fixed:)](https://hngx-t2.vercel.app/)
 
