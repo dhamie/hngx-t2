@@ -19,7 +19,7 @@ const nextConfig = {
         return [
           {
             source: '/movie/:id',
-            destination: '/movie/[id].js', // Matched parameters can be used in the destination
+            destination: '/movie/:id', // Matched parameters can be used in the destination
             permanent: true,
           },
         ]
