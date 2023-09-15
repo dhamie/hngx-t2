@@ -175,7 +175,7 @@ useEffect(() => {
                             <FlexibleDiv1 $width="100%" $padding="" $justifycontent="start">                                
                                 <Para data-testid="movie-release-date" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{new Date(movieDetails.release_date).toISOString().substring(0, 10)}</Para>
                                 <Span $fontsize="1rem" $margin="0.1rem" $color="#555"> - </Span> 
-                                <Para data-testid="movie-runtime" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{movieDetails.runtime} mins</Para>                    
+                                <Para data-testid="movie-runtime" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{movieDetails.runtime}</Para>                    
                             </FlexibleDiv1>
 
                             <FlexibleDiv1 $width="100%" $padding="" $justifycontent="start" $margin="1rem 0"> 
