@@ -8,7 +8,7 @@ import { GrVideo, GrHomeRounded, GrCirclePlay, GrCalendar, GrLogout } from "reac
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export default function Movie({repo}) {
+export default function Movie({repo, err}) {
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieGenre, setMovieGenre] = useState([])
   const router = useRouter();
@@ -18,23 +18,30 @@ export default function Movie({repo}) {
 
 useEffect(() => {
     if (router.isReady){
-      const fetchMovies = () => {                    
-    //         // try{   
-                              
-    //         //     const apiKey = "a267d09f4e9e419f565759a50273521f";
-    //         //     const response = await axios.get(
-    //         //         'https://api.themoviedb.org/3/movie/' + moviePassed + '?api_key=' + apiKey +'&language=en-US'
-    //         //     );                
-    //         //     setMovieDetails(response.data)
-    //         //     setMovieGenre(response.data.genres)
-    //         //     setLoading(false)
-    //         //     //console.log(response.data)
-    //         // } catch (e) {
-    //         //     onsole.log(err.name + ' ' + err.message + ' ' +  err.stack);
-    //         // }
+      const fetchMovies = () => {
+        if(repo){
             setMovieDetails(repo)
-            setMovieGenre(repo.genres)
-            setLoading(false)
+                setMovieGenre(repo.genres)
+                setLoading(false)
+            
+        }else{
+            console.log(err.name + ' ' + err.message + ' ' +  err.stack);
+        }                    
+            // try{                               
+            //     // const apiKey = "a267d09f4e9e419f565759a50273521f";
+            //     // const response = await axios.get(
+            //     //     'https://api.themoviedb.org/3/movie/' + moviePassed + '?api_key=' + apiKey +'&language=en-US'
+            //     // );                
+            //     setMovieDetails(repo)
+            //     setMovieGenre(repo.genres)
+            //     setLoading(false)
+            //     //console.log(response.data)
+            // } catch (e) {
+            //     console.log(err.name + ' ' + err.message + ' ' +  err.stack);
+            // }
+            // setMovieDetails(repo)
+            // setMovieGenre(repo.genres)
+            // setLoading(false)
             
         };
         // fetchMovies()
@@ -42,7 +49,6 @@ useEffect(() => {
         return () => clearTimeout(timer);        
     } 
 
-    console.log(movieGenre)   
   }, [movieDetails, movieGenre]);
 
   if (loading) { 
@@ -246,41 +252,30 @@ export async function getServerSideProps({ params }) {
     // const { language, lessonID } = params;
     // const data = await fetchLesson(language, lessonID);
     const apiKey = "a267d09f4e9e419f565759a50273521f";
-        const response = await axios.get(
-            'https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US'
-        ); 
+        // const response = await axios.get(
+        //     'https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US'
+        // ); 
 
+        
+  
+
+    try{   
+                              
+        const apiKey = "a267d09f4e9e419f565759a50273521f";
         const res = await fetch('https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US')
         const repo = await res.json()
-  
-
-    // try{   
-                              
-    //     const apiKey = "a267d09f4e9e419f565759a50273521f";
-    //     const response = await axios.get(
-    //         'https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US'
-    //     ); 
         
-    //     const res =  response.json()
+        return {
+            props: { repo }, // will be passed to the page component as props
+          };    
+    } catch (err) {
+        console.log(err.name + ' ' + err.message + ' ' +  err.stack);
+        return {
+            props: {err},
+          };
+    } 
 
-    //     return res
-    //     // if (!response) {
-    //     //   return {
-    //     //     notFound: true,
-    //     //   };
-    //     // }
-        
-    //     //console.log(response.data)
-    // } catch (err) {
-    //     console.log(err.name + ' ' + err.message + ' ' +  err.stack);
-    // }
-  
-    
-  
-    return {
-      props: { repo }, // will be passed to the page component as props
-    };
-  }
+}
 
 
 
