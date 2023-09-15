@@ -8,47 +8,48 @@ import { GrVideo, GrHomeRounded, GrCirclePlay, GrCalendar, GrLogout } from "reac
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export default function Movie() {
-  const [movieDetails, setMovieDetails] = useState([]);
-  const [movieGenre, setMovieGenre] = useState([])
-  const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const moviePassed = parseInt(router.query["id"])     
-
+export default function Movie({params}) {
+//   const [movieDetails, setMovieDetails] = useState([]);
+//   const [movieGenre, setMovieGenre] = useState([])
+//   const router = useRouter();
+//   const [loading, setLoading] = useState(true);
+//   const moviePassed = parseInt(router.query["id"])   
+  
 
 useEffect(() => {
-    if (router.isReady ){
-        const fetchMovies = async () => {                    
-            try{   
+    // if (router.isReady){
+    //     const fetchMovies = async () => {                    
+    //         try{   
                               
-                const apiKey = "a267d09f4e9e419f565759a50273521f";
-                const response = await axios.get(
-                    'https://api.themoviedb.org/3/movie/' + moviePassed + '?api_key=' + apiKey +'&language=en-US'
-                );                
-                setMovieDetails(response.data)
-                setMovieGenre(response.data.genres)
-                setLoading(false)
-                //console.log(response.data)
-            } catch (e) {
-                onsole.log(err.name + ' ' + err.message + ' ' +  err.stack);
-            }
+    //             const apiKey = "a267d09f4e9e419f565759a50273521f";
+    //             const response = await axios.get(
+    //                 'https://api.themoviedb.org/3/movie/' + moviePassed + '?api_key=' + apiKey +'&language=en-US'
+    //             );                
+    //             setMovieDetails(response.data)
+    //             setMovieGenre(response.data.genres)
+    //             setLoading(false)
+    //             //console.log(response.data)
+    //         } catch (e) {
+    //             onsole.log(err.name + ' ' + err.message + ' ' +  err.stack);
+    //         }
             
-        };
-        const timer = setTimeout(() => fetchMovies() , 3000);
-        return () => clearTimeout(timer); 
+    //     };
+    //     const timer = setTimeout(() => fetchMovies() , 3000);
+    //     return () => clearTimeout(timer); 
           
-    }     
-  }, [moviePassed]);
+    // } 
+    console.log(params)
+  }, []);
 
-  if (loading) { 
-    return (<div><Skeleton count={1} height="100vh"/></div>)
-  }
+//   if (loading) { 
+//     return (<div><Skeleton count={1} height="100vh"/></div>)
+//   }
 
     return (
         
         <FlexibleDiv $width="100%" $height="100vh" $background="" $alignitems="start">
             
-            <FlexibleDivContent 
+            {/* <FlexibleDivContent 
               $maxwidth="15%" 
               $flex="15%" 
               $height ="100%"
@@ -212,10 +213,67 @@ useEffect(() => {
                     </FlexibleDivContent>                    
                 </FlexibleDiv1>
                 
-            </FlexibleDivContent>
+            </FlexibleDivContent> */}
         </FlexibleDiv>
         )
   }
 
 
 
+//   export async function getStaticProps({ params }) {
+//     // const res = await fetch(`https://.../posts/${params.id}`);
+//     // const post = await res.json();
+//     const id = {params}
+//     return {
+//       props: { params },
+//     }
+//   }
+
+//   export async function getStaticPaths(ctx) {  
+    
+//     return {
+//         paths: [], //indicates that no page needs be created at build time
+//         fallback: true //indicates the type of fallback
+//     }
+// }
+
+
+export async function getServerSideProps({ params }) {
+    // const { language, lessonID } = params;
+    // const data = await fetchLesson(language, lessonID);
+  
+    // if (!data) {
+    //   return {
+    //     notFound: true,
+    //   };
+    // }
+  
+    return {
+      props: {  params }, // will be passed to the page component as props
+    };
+  }
+
+
+
+//   export async function getStaticPaths() {
+//     return {
+//       paths: [
+//         {
+//           params: {
+//             name: 'next.js',
+//           },
+//         }, // See the "paths" section below
+//       ],
+//       fallback: true, // false or "blocking"
+//     }
+//   }
+   
+//   export async function getStaticProps() {
+//     const res = await fetch('https://api.github.com/repos/vercel/next.js')
+//     const repo = await res.json()
+//     return { props: { repo } }
+//   }
+   
+//   export default function Page({ repo }) {
+//     return repo.stargazers_count
+//   }

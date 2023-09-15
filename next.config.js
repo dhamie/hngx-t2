@@ -14,16 +14,7 @@ const nextConfig = {
             hostname: "image.tmdb.org/t/p/w500/",
           },
         ],
-      },   
-      async redirects() {
-        return [
-          {
-            source: '/movie/:id',
-            destination: '/movie/:id', // Matched parameters can be used in the destination
-            permanent: true,
-          },
-        ]
-      }, 
+      },
 }
 
 module.exports = nextConfig
