@@ -8,48 +8,52 @@ import { GrVideo, GrHomeRounded, GrCirclePlay, GrCalendar, GrLogout } from "reac
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-export default function Movie({params}) {
-//   const [movieDetails, setMovieDetails] = useState([]);
-//   const [movieGenre, setMovieGenre] = useState([])
-//   const router = useRouter();
-//   const [loading, setLoading] = useState(true);
-//   const moviePassed = parseInt(router.query["id"])   
+export default function Movie({repo}) {
+  const [movieDetails, setMovieDetails] = useState([]);
+  const [movieGenre, setMovieGenre] = useState([])
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const moviePassed = parseInt(router.query["id"])   
   
 
 useEffect(() => {
-    // if (router.isReady){
-    //     const fetchMovies = async () => {                    
-    //         try{   
+    if (router.isReady){
+      const fetchMovies = () => {                    
+    //         // try{   
                               
-    //             const apiKey = "a267d09f4e9e419f565759a50273521f";
-    //             const response = await axios.get(
-    //                 'https://api.themoviedb.org/3/movie/' + moviePassed + '?api_key=' + apiKey +'&language=en-US'
-    //             );                
-    //             setMovieDetails(response.data)
-    //             setMovieGenre(response.data.genres)
-    //             setLoading(false)
-    //             //console.log(response.data)
-    //         } catch (e) {
-    //             onsole.log(err.name + ' ' + err.message + ' ' +  err.stack);
-    //         }
+    //         //     const apiKey = "a267d09f4e9e419f565759a50273521f";
+    //         //     const response = await axios.get(
+    //         //         'https://api.themoviedb.org/3/movie/' + moviePassed + '?api_key=' + apiKey +'&language=en-US'
+    //         //     );                
+    //         //     setMovieDetails(response.data)
+    //         //     setMovieGenre(response.data.genres)
+    //         //     setLoading(false)
+    //         //     //console.log(response.data)
+    //         // } catch (e) {
+    //         //     onsole.log(err.name + ' ' + err.message + ' ' +  err.stack);
+    //         // }
+            setMovieDetails(repo)
+            setMovieGenre(repo.genres)
+            setLoading(false)
             
-    //     };
-    //     const timer = setTimeout(() => fetchMovies() , 3000);
-    //     return () => clearTimeout(timer); 
-          
-    // } 
-    console.log(params)
-  }, []);
+        };
+        // fetchMovies()
+        const timer = setTimeout(() => fetchMovies() , 3000);
+        return () => clearTimeout(timer);        
+    } 
 
-//   if (loading) { 
-//     return (<div><Skeleton count={1} height="100vh"/></div>)
-//   }
+    console.log(movieGenre)   
+  }, [movieDetails, movieGenre]);
+
+  if (loading) { 
+    return (<div><Skeleton count={1} height="100vh"/></div>)
+  }
 
     return (
         
         <FlexibleDiv $width="100%" $height="100vh" $background="" $alignitems="start">
             
-            {/* <FlexibleDivContent 
+            <FlexibleDivContent 
               $maxwidth="15%" 
               $flex="15%" 
               $height ="100%"
@@ -213,7 +217,7 @@ useEffect(() => {
                     </FlexibleDivContent>                    
                 </FlexibleDiv1>
                 
-            </FlexibleDivContent> */}
+            </FlexibleDivContent>
         </FlexibleDiv>
         )
   }
@@ -241,15 +245,40 @@ useEffect(() => {
 export async function getServerSideProps({ params }) {
     // const { language, lessonID } = params;
     // const data = await fetchLesson(language, lessonID);
+    const apiKey = "a267d09f4e9e419f565759a50273521f";
+        const response = await axios.get(
+            'https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US'
+        ); 
+
+        const res = await fetch('https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US')
+        const repo = await res.json()
   
-    // if (!data) {
-    //   return {
-    //     notFound: true,
-    //   };
+
+    // try{   
+                              
+    //     const apiKey = "a267d09f4e9e419f565759a50273521f";
+    //     const response = await axios.get(
+    //         'https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US'
+    //     ); 
+        
+    //     const res =  response.json()
+
+    //     return res
+    //     // if (!response) {
+    //     //   return {
+    //     //     notFound: true,
+    //     //   };
+    //     // }
+        
+    //     //console.log(response.data)
+    // } catch (err) {
+    //     console.log(err.name + ' ' + err.message + ' ' +  err.stack);
     // }
   
+    
+  
     return {
-      props: {  params }, // will be passed to the page component as props
+      props: { repo }, // will be passed to the page component as props
     };
   }
 
