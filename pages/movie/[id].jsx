@@ -34,7 +34,7 @@ useEffect(() => {
   }, [movieDetails, movieGenre]);
 
   if (loading) { 
-    return (<div><Skeleton count={1} height="100vh"/></div>)
+    return (<div><Skeleton count={2} height="100vh"/></div>)
   }
 
   if (repo.success == false) {
