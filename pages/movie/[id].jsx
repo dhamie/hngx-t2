@@ -80,28 +80,28 @@ useEffect(() => {
                             <FlexibleDiv1 $margin="0" $width="100%" $height="10vh">
                                 <FlexibleDiv1 $margin="0" $width="70%" $justifycontent="start">   
                                     <GrHomeRounded className="icon"/> 
-                                    <Para $fontsize="1rem" $color="#555" $margin="0">Home</Para>
+                                    <Para $fontsize="1rem" $color="#555" $margin="0" $rdisplay="none" >Home</Para>
                                 </FlexibleDiv1>  
                             </FlexibleDiv1>
 
                             <FlexibleDiv1 $margin="0" $width="100%" $height="10vh">
                                 <FlexibleDiv1 $margin="0" $width="70%" $justifycontent="start">   
                                     <GrVideo className="icon"/>
-                                    <Para $fontsize="1rem" $color="#555" $margin="0">Movies</Para>
+                                    <Para $fontsize="1rem" $color="#555" $margin="0" $rdisplay="none">Movies</Para>
                                 </FlexibleDiv1>
                             </FlexibleDiv1>
 
                             <FlexibleDiv1 $margin="0" $width="100%" $height="10vh"> 
                                 <FlexibleDiv1 $margin="0" $width="70%" $justifycontent="start">  
                                     <GrCirclePlay className="icon"/> 
-                                    <Para $fontsize="1rem" $color="#555" $margin="0">Tv Series</Para>
+                                    <Para $fontsize="1rem" $color="#555" $margin="0" $rdisplay="none">Tv Series</Para>
                                 </FlexibleDiv1>
                             </FlexibleDiv1>
 
                             <FlexibleDiv1 $margin="0" $width="100%" $height="10vh"> 
                                 <FlexibleDiv1 $margin="0" $width="70%" $justifycontent="start">  
                                     <GrCalendar className="icon"/> 
-                                    <Para $fontsize="1rem" $color="#555" $margin="0">Upcoming</Para>
+                                    <Para $fontsize="1rem" $color="#555" $margin="0" $rdisplay="none">Upcoming</Para>
                                 </FlexibleDiv1>
                             </FlexibleDiv1> 
                             
@@ -173,7 +173,7 @@ useEffect(() => {
                             <Title data-testid="movie-title" $fontsize="2rem" $margin="0" $color="">{movieDetails.title}</Title>
 
                             <FlexibleDiv1 $width="100%" $padding="" $justifycontent="start">                                
-                                <Para data-testid="movie-release-date" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{new Date(movieDetails.release_date).toUTCString()}</Para>
+                                <Para data-testid="movie-release-date" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{new Date(movieDetails.release_date).toISOString().substring(0, 10)}</Para>
                                 <Span $fontsize="1rem" $margin="0.1rem" $color="#555"> - </Span> 
                                 <Para data-testid="movie-runtime" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{movieDetails.runtime} mins</Para>                    
                             </FlexibleDiv1>

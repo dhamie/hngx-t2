@@ -147,6 +147,11 @@ export const Para = styled.p`
   margin: ${props => props.$margin || "1em"};
   line-height: ${props => props.$lineheight || "1.5"};
   font-weight: ${props => props.$fontweight || "normal"};
+
+  @media (max-width: 767px) {
+    display: ${props => props.$rdisplay || "block"};
+  }
+  
 `;
 
 
