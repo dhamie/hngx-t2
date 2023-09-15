@@ -39,7 +39,7 @@ export default function Card({dataTestId, movieValues}) {
                     </FlexibleDiv1>
                 </FlexibleDiv1>     
             </Link>
-            <FlexibleDivContent data-testid={dataTestId} $padding="1rem" $margin="0" $position="absolute" $top="3%" $right="10%" $zindex="2">
+            <FlexibleDivContent $padding="1rem" $margin="0" $position="absolute" $top="3%" $right="10%" $zindex="2">
                     <BsFillHeartFill className={ isModal ? "icon-noclick icon-click" : "icon-noclick" } onClick={() => setIsModal((prevIsModal) => !prevIsModal)}/>
             </FlexibleDivContent>
         </FlexibleDivContent>
