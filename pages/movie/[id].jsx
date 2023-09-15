@@ -13,11 +13,11 @@ export default function Movie() {
   const [movieGenre, setMovieGenre] = useState([])
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const moviePassed = parseInt(router.query["id"])   
-  
+  const moviePassed = parseInt(router.query["id"])     
+
 
 useEffect(() => {
-    if (router.isReady){
+    if (router.isReady ){
         const fetchMovies = async () => {                    
             try{   
                               
@@ -38,7 +38,7 @@ useEffect(() => {
         return () => clearTimeout(timer); 
           
     }     
-  }, []);
+  }, [moviePassed]);
 
   if (loading) { 
     return (<div><Skeleton count={1} height="100vh"/></div>)
@@ -218,25 +218,4 @@ useEffect(() => {
   }
 
 
-//   export async function getStaticPaths() {
-//     return {
-//       paths: [
-//         {
-//           params: {
-//             name: 'next.js',
-//           },
-//         }, // See the "paths" section below
-//       ],
-//       fallback: true, // false or "blocking"
-//     }
-//   }
-   
-//   export async function getStaticProps() {
-//     const res = await fetch('https://api.github.com/repos/vercel/next.js')
-//     const repo = await res.json()
-//     return { props: { repo } }
-//   }
-   
-//   export default function Page({ repo }) {
-//     return repo.stargazers_count
-//   }
+
