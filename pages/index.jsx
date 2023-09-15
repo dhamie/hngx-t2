@@ -118,11 +118,10 @@ if (loading) {
                   <ImageWrap $width="100%" $height="">
                       <Image
                           src={Logo}
-                          alt='alt' 
+                          alt='Logo' 
                           width={0}
                           height={0}
                           style={{ width: '40%', height: 'auto', margin:'auto', display: 'block', objectFit: "contain", objectPosition: "center"}}
-                          priority
                           data-testid="movie-poster"
                       />
                   </ImageWrap>
@@ -165,13 +164,11 @@ if (loading) {
             <ImageWrap $width="100%" $height="100%">              
                 <Image
                     src={`https://image.tmdb.org/t/p/w500${movieOne.poster_path}`}
-                    alt='alt' 
+                    alt='Poster' 
                     width={0}
                     height={0}
                     sizes="100vw"
                     style={{ width: '100%', height: '100%', objectFit: "cover", objectPosition: "top"}}
-                    priority
-                    data-testid="movie-poster"
                 />
             </ImageWrap>
 

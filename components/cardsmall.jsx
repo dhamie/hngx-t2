@@ -33,12 +33,11 @@ export default function CardSmall({dataTestId, movieValues}) {
                     <ImageWrap $width="30%">
                         <Image
                             src={`https://image.tmdb.org/t/p/w500/${movieValues.poster_path}`}
-                            alt='alt' 
+                            alt='Poster' 
                             width={0}
                             height={0}
                             sizes="100vw"
                             style={{ width: '100%', height: '110px', objectFit: "cover", objectPosition: "top"}}
-                            priority
                             data-testid="movie-poster"
                         />
                     </ImageWrap>

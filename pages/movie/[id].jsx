@@ -13,22 +13,20 @@ export default function Movie({repo, err}) {
   const [movieGenre, setMovieGenre] = useState([])
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const moviePassed = parseInt(router.query["id"])   
+  // const moviePassed = parseInt(router.query["id"])   
   
 
 useEffect(() => {
     if (router.isReady){
       const fetchMovies = () => {
-        if(repo){
-            setMovieDetails(repo)
+            if(!repo.success){
+                setMovieDetails(repo)
                 setMovieGenre(repo.genres)
-                setLoading(false)
-            
-        }else{
-            console.log(err.name + ' ' + err.message + ' ' +  err.stack);
-        } 
-            
+                setLoading(false)            
+            }
         };
+        
+        //console.log(repo)
         const timer = setTimeout(() => fetchMovies() , 3000);
         return () => clearTimeout(timer);        
     } 
@@ -37,6 +35,11 @@ useEffect(() => {
 
   if (loading) { 
     return (<div><Skeleton count={1} height="100vh"/></div>)
+  }
+
+  if (repo.success == false) {
+    console.log(repo.status_message)
+    return (<div>check console, request could not be made for movie id(can be due to the id not existing when fetched)<Skeleton count={1} height="100vh"/></div>)
   }
 
     return (
@@ -63,12 +66,11 @@ useEffect(() => {
                         <ImageWrap $width="100%" $height="auto">
                                 <Image
                                     src={Logo}
-                                    alt='alt' 
+                                    alt='Logo' 
                                     width={0}
                                     height={0}
                                     style={{ width: '95%', height: 'auto', margin:'auto', display: 'block', objectFit: "contain", objectPosition: "center"}}
-                                    priority
-                                    data-testid="movie-poster"
+                                    rel="preload"
                                 />
                             </ImageWrap>
                        </FlexibleDiv1>
@@ -143,13 +145,13 @@ useEffect(() => {
                         <ImageWrap $width="100%" $height="100%">
                             <Image
                                 src={`https://image.tmdb.org/t/p/w500/${movieDetails.backdrop_path}`}
-                                alt='alt' 
+                                alt='Back Drop' 
                                 width={0}
                                 height={0}
                                 sizes="100vw"
                                 style={{ width: '100%', height: '700px', objectFit: "cover", objectPosition: "center"}}
-                                priority
                                 data-testid="movie-poster"
+                                rel="preload"
                             />
                         </ImageWrap>
                     </FlexibleDiv1>
@@ -222,10 +224,10 @@ export async function getServerSideProps({ params }) {
     //     'https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US'
     // ); 
     try{
-                                     
         const apiKey = "a267d09f4e9e419f565759a50273521f";
         const res = await fetch('https://api.themoviedb.org/3/movie/' + params.id + '?api_key=' + apiKey +'&language=en-US')
         const repo = await res.json()
+        
         
         return {
             props: { repo }, 
@@ -233,8 +235,8 @@ export async function getServerSideProps({ params }) {
     } catch (err) {
         console.log(err.name + ' ' + err.message + ' ' +  err.stack);
         return {
-            props: {err},
-          };
+            props: { err }, 
+          };   
     } 
 
 }
