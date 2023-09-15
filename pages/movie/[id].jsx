@@ -39,7 +39,7 @@ useEffect(() => {
 
   if (repo.success == false) {
     console.log(repo.status_message)
-    return (<div>check console, request could not be made for movie id(can be due to the id not existing when fetched)<Skeleton count={1} height="100vh"/></div>)
+    return (<div>check console, request could not be made for movie id(can be due to the id not existing when fetched)<Skeleton count={1} height="50vh"/></div>)
   }
 
     return (
