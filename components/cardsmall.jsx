@@ -19,7 +19,7 @@ export default function CardSmall({dataTestId, movieValues}) {
         $res9flex="100%" 
         $maxwidth="100%"  
         $flex="100%">
-            <Link key={movieValues.id} href={'/movie/'+ movieValues.id } >
+            <Link key={movieValues.id} href={'/movies/'+ movieValues.id } >
                 <FlexibleDiv1 $padding="0" 
                     $height="100px"  
                     $background="" 

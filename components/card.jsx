@@ -13,7 +13,7 @@ export default function Card({dataTestId, movieValues}) {
     
     return (
         <FlexibleDivContent data-testid={dataTestId} $padding="1rem" $margin="0">
-            <Link key={movieValues.id} href= {{pathname: '/movie/[id]', query: { id: movieValues.id }}}>
+            <Link key={movieValues.id} href= {{pathname: '/movies/[id]', query: { id: movieValues.id }}}>
                 <FlexibleDiv1 $padding="0" 
                     $height="100%"  
                     $background="" 
