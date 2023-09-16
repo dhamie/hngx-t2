@@ -175,7 +175,8 @@ useEffect(() => {
                             <FlexibleDiv1 $width="100%" $padding="" $justifycontent="start">                                
                                 <Para data-testid="movie-release-date" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{new Date(movieDetails.release_date).toUTCString()}</Para>
                                 <Span $fontsize="1rem" $margin="0.1rem" $color="#555"> - </Span> 
-                                <Para data-testid="movie-runtime" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{movieDetails.runtime}</Para>                    
+                                <Para data-testid="movie-runtime" $fontsize="1rem" $margin="0.5rem" $color="#555" $fontweight="600">{movieDetails.runtime}</Para> 
+                                <Para data-testid="movie-overview" $fontsize="1rem" $margin="0.5rem" $color="">{movieDetails.overview}</Para>                   
                             </FlexibleDiv1>
 
                             <FlexibleDiv1 $width="100%" $padding="" $justifycontent="start" $margin="1rem 0"> 
@@ -184,7 +185,6 @@ useEffect(() => {
                                 ))}                 
                             </FlexibleDiv1>
 
-                            <Para data-testid="movie-overview" $fontsize="1rem" $margin="0.5rem" $color="">{movieDetails.overview}</Para>
                             
 
                     </FlexibleDivContent>
