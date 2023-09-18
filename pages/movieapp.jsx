@@ -13,7 +13,6 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 
 export default function MovieApp() {
-  console.log("session",  session)
   
   const [movies, setMovies] = useState([]);
   const [movieRand, setMovieRand] = useState(3);
