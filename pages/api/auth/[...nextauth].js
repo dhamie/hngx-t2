@@ -40,6 +40,7 @@ export const authOptions = {
         }
         return token
     },
+    secret: process.env.NEXTAUTH_SECRET,
     async session({ session, token, user }) {
         // Send properties to the client, like an access_token and user id from a provider.
         if(token){
@@ -53,6 +54,7 @@ export const authOptions = {
     // pages: {
     //     signIn: '/auth/signin',
     // },  
+   
 }
 
 export default NextAuth(authOptions)
