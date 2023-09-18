@@ -1,11 +1,14 @@
+import { SessionProvider } from "next-auth/react"
 import {GlobalStyle} from "../components/styledcomp"
 
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     return (
       <> 
-      <GlobalStyle />
-        <Component {...pageProps} />     
+      <SessionProvider session={session}>
+        <GlobalStyle />
+        <Component {...pageProps} />   
+      </SessionProvider>        
       </>
       
     )
